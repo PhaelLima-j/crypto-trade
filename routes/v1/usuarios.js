@@ -1,4 +1,5 @@
 const express = require('express');
+const passport = require('passport');
 
 const { criaUsuario } = require('../../services');
 const { logger } = require('../../utils');
@@ -23,4 +24,10 @@ router.post('/', async(req, res) => {
     }
 });
 
+router.get('/me', passport.authenticate('jwt', { session: false }), (req, res) => {
+    res.json({
+        sucesso: true,
+        usuario: req.user,
+    })
+})
 module.exports = router;
