@@ -2,6 +2,8 @@ const express = require('express')
 
 const { logger } = require('../../utils');
 
+const { checaSaldo } = require('../../services');
+
 const router = express.Router();
 
 router.get('/', (req, res) => {
@@ -22,6 +24,7 @@ router.post('/', async(req, res) => {
         res.json({
             sucesso: true,
             depositos: usuario.depositos,
+            saques: await checaSaldo(usuario),
         });
     } catch (e) {
         logger.error(`Erro no depósito: ${e.message}`);

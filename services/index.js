@@ -1,6 +1,8 @@
 const { Usuario } = require('../models');
+const checaSaldo = require('./checa-saldo');
 
 module.exports = {
     criaUsuario: require('./cria-usuario'),
     logaUsuario: require('./loga-usuario'),
+    checaSaldo: require('./checa-saldo'),
 };
