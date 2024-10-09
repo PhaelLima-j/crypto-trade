@@ -24,6 +24,11 @@ const DepositoSchema = new Schema ({
         type: Date,
         require: true,
     },
+    status: {
+        type: String,
+        default: 'Pendente'
+
+    }
 });
 
 const Usuario = new Schema({

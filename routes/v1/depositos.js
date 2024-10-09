@@ -18,7 +18,7 @@ router.post('/', async(req, res) => {
 
     try{
         const valor = req.body.valor;
-        usuario.depositos.push({ valor: valor, data: new Date() });
+        usuario.depositos.push({ valor: valor, data: new Date(), status: 'Concluído' });
         await usuario.save();
 
         res.json({
