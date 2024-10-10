@@ -4,6 +4,17 @@ const checaSaldo = async (usuario) => {
     const operacoes = (await Usuario.aggregate([
         { $match: { cpf: usuario.cpf } },
         {
+            $project: {
+                depositos: {
+                    $filter: {
+                        input: "$depositos",
+                        as: "deposito",
+                        cond: { $eq: ["$$deposito.status", "Concluído"] }
+                    }
+                }
+            }
+        },
+        {
             $unwind: {
                 path: "$depositos",
                 preserveNullAndEmptyArrays: true,         
