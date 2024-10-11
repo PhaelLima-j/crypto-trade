@@ -1,7 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 
-const { criaUsuario, checaSaldo } = require('../../services');
+const { criaUsuario } = require('../../services');
+const { checaSaldo } = require('../../services');
 const { logger } = require('../../utils');
 const router = express.Router();
 
